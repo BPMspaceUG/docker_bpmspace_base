@@ -7,10 +7,7 @@ RUN export DEBIAN_FRONTEND=noninteractive
 RUN echo "postfix postfix/mailname string test.hostname.com" | debconf-set-selections
 RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
-RUN apt-get install -y git
 RUN apt-get install -y openssh-client
-RUN apt-get install -y wget
-RUN apt-get install -y nano
 RUN apt-get install -y mysql-client
 RUN apt-get install -y mailutils
 RUN apt-get install -y libicu-dev
