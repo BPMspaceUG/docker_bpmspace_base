@@ -54,6 +54,14 @@ RUN chmod 777 /usr/local/bin/init_xampp.sh
 # Start the init script
 ENTRYPOINT ["/usr/local/bin/init_xampp.sh"]
 
+# install
+RUN apt-get install -y git
+RUN apt-get install -y wget
+RUN apt-get install -y openssh-client
+RUN apt-get install -y nano
+RUN apt-get install -y mysql-client
+RUN apt-get install -y mailutils
+
 # credits to https://github.com/cswl/xampp-docker but new version https://www.apachefriends.org/xampp-files/7.3.10/xampp-linux-x64-7.3.10-1-installer.run
 
 
