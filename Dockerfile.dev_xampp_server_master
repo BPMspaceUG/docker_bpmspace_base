@@ -48,11 +48,11 @@ RUN echo "export TERM=xterm" >> /root/.bashrc
 
 EXPOSE 80 443 3306
 
-ADD init.sh /usr/local/bin/init.sh
-RUN chmod 777 /usr/local/bin/init.sh
+ADD init_xampp.sh /usr/local/bin/init_xampp.sh
+RUN chmod 777 /usr/local/bin/init_xampp.sh
 
 # Start the init script
-ENTRYPOINT ["/usr/local/bin/init.sh"]
+ENTRYPOINT ["/usr/local/bin/init_xampp.sh"]
 
 # credits to https://github.com/cswl/xampp-docker but new version https://www.apachefriends.org/xampp-files/7.3.10/xampp-linux-x64-7.3.10-1-installer.run
 
