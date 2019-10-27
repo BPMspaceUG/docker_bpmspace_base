@@ -16,6 +16,15 @@ RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-install -j$(nproc) intl pdo_mysql bcmath mbstring exif gd
 RUN a2enmod rewrite
 RUN mkfifo /var/spool/postfix/public/pickup
-
+RUN ETCD_VER=v3.4.3
+RUN GOOGLE_URL=https://storage.googleapis.com/etcd
+RUN GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+RUN DOWNLOAD_URL=${GOOGLE_URL}
+RUN curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+RUN tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download --strip-components=1
+RUN rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+RUN sudo cp /tmp/etcd-download/etcdctl /usr/local/bin/
+RUN rm -rf /tmp/etcd-download/
+RUN etcdctl --version
 
 
