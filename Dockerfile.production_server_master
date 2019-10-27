@@ -4,7 +4,7 @@ RUN docker-php-ext-enable pdo_mysql mysqli
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends apt-utils
 RUN export DEBIAN_FRONTEND=noninteractive
-RUN echo "postfix postfix/mailname string test.hostname.com" | debconf-set-selections
+RUN echo "postfix postfix/mailname string placeholder.hostname.com" | debconf-set-selections
 RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
 RUN apt-get install -y openssh-client

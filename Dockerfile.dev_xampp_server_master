@@ -54,6 +54,11 @@ RUN chmod 777 /usr/local/bin/init_xampp.sh
 # Start the init script
 ENTRYPOINT ["/usr/local/bin/init_xampp.sh"]
 
+RUN export DEBIAN_FRONTEND=noninteractive
+RUN echo "postfix postfix/mailname string placeholder.hostname.com" | debconf-set-selections
+RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
+
 # install
 RUN apt-get install -y git
 RUN apt-get install -y wget
