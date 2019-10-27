@@ -70,12 +70,13 @@ RUN apt-get install -y nano
 RUN apt-get install -y mysql-client
 RUN apt-get install -y mailutils
 
-curl -L https://storage.googleapis.com/etcd/v3.4.3/etcd-v3.4.3-linux-amd64.tar.gz -o /tmp/etcd-v3.4.3-linux-amd64.tar.gz
-tar xzvf /tmp/etcd-v3.4.3-linux-amd64.tar.gz -C /tmp/etcd-download --strip-components=1
-rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
-cp /tmp/etcd-download/etcdctl /usr/local/bin/
-rm -rf /tmp/etcd-download/
-etcdctl --version
+RUN curl -L https://storage.googleapis.com/etcd/v3.4.3/etcd-v3.4.3-linux-amd64.tar.gz -o /tmp/etcd-v3.4.3-linux-amd64.tar.gz
+RUN mkdir /tmp/etcd-download
+RUN tar xzvf /tmp/etcd-v3.4.3-linux-amd64.tar.gz -C /tmp/etcd-download --strip-components=1
+RUN rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
+RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
+RUN rm -rf /tmp/etcd-download/
+RUN etcdctl version
 
 # credits to https://github.com/cswl/xampp-docker but new version https://www.apachefriends.org/xampp-files/7.3.10/xampp-linux-x64-7.3.10-1-installer.run
 
