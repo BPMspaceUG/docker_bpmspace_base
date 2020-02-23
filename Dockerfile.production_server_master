@@ -26,3 +26,6 @@ RUN etcdctl version
 COPY production_server_master.sh /scripts/commands.sh
 RUN ["chmod", "+x", "/scripts/commands.sh"]
 ENTRYPOINT ["/scripts/commands.sh"]
+WORKDIR /var/www/html
+EXPOSE 80
+CMD ["apache2-foreground"]
