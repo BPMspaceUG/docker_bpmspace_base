@@ -2,7 +2,7 @@ FROM php:7.3.5-apache-stretch
 RUN docker-php-ext-install pdo_mysql mysqli
 RUN docker-php-ext-enable pdo_mysql mysqli
 RUN export DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends apt-utils
 RUN echo "postfix postfix/mailname string placeholder.hostname.com" | debconf-set-selections
 RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
@@ -23,5 +23,6 @@ RUN rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
 RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
 RUN rm -rf /tmp/etcd-download/
 RUN etcdctl version
-
-
+COPY production_server_master.sh /scripts/commands.sh
+RUN ["chmod", "+x", "/scripts/commands.sh"]
+ENTRYPOINT ["/scripts/commands.sh"]

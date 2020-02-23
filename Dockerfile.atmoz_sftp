@@ -1,0 +1,7 @@
+FROM atmoz/sftp
+COPY atmozsftp.sh /etc/sftp.d/atmozsftp.sh
+RUN ["chmod", "+x", "/etc/sftp.d/atmozsftp.sh"]
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y git
+RUN apt-get install -y wget
+RUN apt-get install -y nano
