@@ -23,9 +23,9 @@ RUN rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
 RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
 RUN rm -rf /tmp/etcd-download/
 RUN etcdctl version
-COPY production_server_master.sh /scripts/commands.sh
-RUN ["chmod", "+x", "/scripts/commands.sh"]
-ENTRYPOINT ["/scripts/commands.sh"]
-WORKDIR /var/www/html
-EXPOSE 80
-CMD ["apache2-foreground"]
+#COPY production_server_master.sh /scripts/commands.sh
+#RUN ["chmod", "+x", "/scripts/commands.sh"]
+#ENTRYPOINT ["/scripts/commands.sh"]
+#WORKDIR /var/www/html
+#EXPOSE 80
+#CMD ["apache2-foreground"]
