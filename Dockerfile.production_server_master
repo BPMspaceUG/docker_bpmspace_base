@@ -24,5 +24,4 @@ RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
 RUN rm -rf /tmp/etcd-download/
 RUN etcdctl version
 COPY production_server_master.sh /scripts/init.sh
-RUN ["chmod", "+x", "/scripts/init.sh"]
-RUN echo touch /tmp/endentrypoint.log >> /usr/local/bin/docker-php-entrypoint
+
