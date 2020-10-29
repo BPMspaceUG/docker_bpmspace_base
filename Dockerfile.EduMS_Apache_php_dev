@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Run apt update and install some dependancies needed for docker-php-ext
 RUN apt update && apt install -y apt-utils sendmail mariadb-client pngquant unzip zip libpng-dev libmcrypt-dev git \
-  curl libicu-dev libxml2-dev libssl-dev libcurl3 libcurl3-dev libsqlite3-dev libsqlite3-0 openssh-client wget nano mailutils
+  curl libicu-dev libxml2-dev libssl-dev libcurl3-dev libsqlite3-dev libsqlite3-0 openssh-client wget nano mailutils
 
 # install Mail client
 RUN apt-get install -y --no-install-recommends apt-utils
