@@ -37,6 +37,6 @@ RUN a2enmod rewrite
 #RUN etcdctl version
 
 #Set run INIT script
-COPY ./EduMS_Apache_php_dev.sh /scripts/init.sh
-RUN ["chmod", "+x", "/scripts/init.sh"]
-RUN echo touch /tmp/endentrypoint.log >> /usr/local/bin/docker-php-entrypoint
+#COPY ./EduMS_Apache_php_dev.sh /scripts/init.sh
+#RUN ["chmod", "+x", "/scripts/init.sh"]
+#RUN echo touch /tmp/endentrypoint.log >> /usr/local/bin/docker-php-entrypoint
