@@ -36,6 +36,6 @@ RUN rm -rf /tmp/etcd-download/
 RUN etcdctl version
 
 #Set run INIT script
-COPY development_server_master.sh /scripts/init.sh
+COPY EduMS_Apache_php_dev.sh /scripts/init.sh
 RUN ["chmod", "+x", "/scripts/init.sh"]
 RUN echo touch /tmp/endentrypoint.log >> /usr/local/bin/docker-php-entrypoint
