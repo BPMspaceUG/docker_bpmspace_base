@@ -8,13 +8,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y apt-utils pngquant unzip zip  openssh-client wget nano mailutils
 
 # install Mail client
-RUN apt-get install -y --no-install-recommends apt-utils
-RUN echo "postfix postfix/mailname string placeholder.hostname.com" | debconf-set-selections
-RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
+#RUN apt-get install -y --no-install-recommends apt-utils
+#RUN echo "postfix postfix/mailname string placeholder.hostname.com" | debconf-set-selections
+#RUN echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
   
 # Install PHP extensions
-RUN docker-php-ext-install mysqli bcmath gd intl xml curl pdo_mysql pdo_sqlite hash zip dom session opcache
+# RUN docker-php-ext-install mysqli bcmath gd intl xml curl pdo_mysql pdo_sqlite hash zip dom session opcache
 
 # Update web root to public
 # See: https://hub.docker.com/_/php#changing-documentroot-or-other-apache-configuration
@@ -26,13 +26,13 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 
 # install etcd client
-RUN curl -L https://storage.googleapis.com/etcd/v3.4.3/etcd-v3.4.3-linux-amd64.tar.gz -o /tmp/etcd-v3.4.3-linux-amd64.tar.gz
-RUN mkdir /tmp/etcd-download
-RUN tar xzvf /tmp/etcd-v3.4.3-linux-amd64.tar.gz -C /tmp/etcd-download --strip-components=1
-RUN rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
-RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
-RUN rm -rf /tmp/etcd-download/
-RUN etcdctl version
+#RUN curl -L https://storage.googleapis.com/etcd/v3.4.3/etcd-v3.4.3-linux-amd64.tar.gz -o /tmp/etcd-v3.4.3-linux-amd64.tar.gz
+#RUN mkdir /tmp/etcd-download
+#RUN tar xzvf /tmp/etcd-v3.4.3-linux-amd64.tar.gz -C /tmp/etcd-download --strip-components=1
+#RUN rm -f /tmp/etcd-v3.4.3-linux-amd64.tar.gz
+#RUN cp /tmp/etcd-download/etcdctl /usr/local/bin/
+#RUN rm -rf /tmp/etcd-download/
+#RUN etcdctl version
 
 #Set run INIT script
 COPY EduMS_Apache_php_dev.sh /scripts/init.sh
