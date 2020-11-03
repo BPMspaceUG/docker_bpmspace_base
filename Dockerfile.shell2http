@@ -4,4 +4,5 @@ FROM msoap/shell2http
 RUN apk update
 RUN apk add bash
 RUN apk add --no-cache openjdk8
+ENV PATH = $PATH:/root/cypher/
 CMD ["/date", "date"] 
