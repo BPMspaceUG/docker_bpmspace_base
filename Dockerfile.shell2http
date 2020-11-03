@@ -1,4 +1,8 @@
 FROM msoap/shell2http
 # may be install some alpine packages:
 # RUN apk add --no-cache ...
+RUN apt-get update
+RUN apt-get install -y curl wget
+ADD https://dist.neo4j.org/cypher-shell/cypher-shell_4.1.2_all.deb /tmp
 CMD ["/date", "date"] 
+CMD apt install /tmp/cypher-shell_4.1.2_all.deb
