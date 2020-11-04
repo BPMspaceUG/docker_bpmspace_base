@@ -4,7 +4,7 @@ FROM msoap/shell2http
 RUN apk update
 RUN apk add --no-cache bash
 RUN apk add --no-cache openjdk8
-RUN echo “http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN apk add --no-cache cypher-lint 
 ENV PATH = $PATH:/root/cypher/
 CMD ["/date", "date"] 
