@@ -26,6 +26,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
+RUN a2enmod header
 
 # install etcd client
 #RUN curl -L https://storage.googleapis.com/etcd/v3.4.3/etcd-v3.4.3-linux-amd64.tar.gz -o /tmp/etcd-v3.4.3-linux-amd64.tar.gz
